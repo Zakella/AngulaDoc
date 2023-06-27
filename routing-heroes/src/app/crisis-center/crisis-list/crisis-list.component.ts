@@ -4,7 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CrisisService } from '../crisis.service';
-import { Hero } from '../crisis';
+import { Crisis } from '../crisis';
 
 @Component({
   selector: 'app-hero-list',
@@ -12,7 +12,7 @@ import { Hero } from '../crisis';
   styleUrls: ['./crisis-list.component.css']
 })
 export class CrisisListComponent implements OnInit {
-  heroes$!: Observable<Hero[]>;
+  heroes$!: Observable<Crisis[]>;
   selectedId = 0;
 
   constructor(

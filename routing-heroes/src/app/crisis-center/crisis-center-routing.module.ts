@@ -1,25 +1,50 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
-import { HeroListComponent } from './hero-list/hero-list.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { CrisisCenterHomeComponent } from './crisis-center-home/crisis-center-home.component';
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { CrisisCenterComponent } from './crisis-center/crisis-center.component';
+import { CrisisDetailComponent } from './crisis-detail/crisis-detail.component';
 
-import { HeroesRoutingModule } from './heroes-routing.module';
+const crisisCenterRoutes: Routes = [
+  {
+    path: 'crisis-center',
+    component: CrisisCenterComponent,
+    children: [
+      {
+        path: '',
+        component: CrisisListComponent,
+        children: [
+          {
+            path: ':id',
+            component: CrisisDetailComponent
+          },
+          {
+            path: '',
+            component: CrisisCenterHomeComponent
+          }
+        ]
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    HeroesRoutingModule
+    RouterModule.forChild(crisisCenterRoutes)
   ],
-  declarations: [
-    HeroListComponent,
-    HeroDetailComponent
+  exports: [
+    RouterModule
   ]
 })
-export class CrisisCenterRoutingModule {}
+export class CrisisCenterRoutingModule { }
 
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/
 
 /*
 Copyright Google LLC. All Rights Reserved.

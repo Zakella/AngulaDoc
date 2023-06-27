@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 
 import {Crisis} from './crisis';
-import {HEROES} from './mock-heroes';
+import {CRISES} from './mock-crises';
 import {MessageService} from 'src/app/message.service';
 import {map} from 'rxjs/operators';
 
@@ -16,7 +16,7 @@ export class CrisisService {
   }
 
   getHeroes(): Observable<Crisis[]> {
-    const crises = of(HEROES);
+    const crises = of(CRISES);
     this.messageService.add('CrisisService: fetched heroes');
     return crises;
   }
