@@ -3,6 +3,9 @@
   <p>Id: {{ crisis.id }}</p>
   <label for="crisis-name">Crisis name: </label>
   <input type="text" id="crisis-name" [(ngModel)]="editName" placeholder="name"/>
-  <button type="button" (click)="gotoCrises(crisis)">Back</button>
+  <div>
+    <button type="button" (click)="save()">Save</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </div>
 </div>
-
+генгнегнег

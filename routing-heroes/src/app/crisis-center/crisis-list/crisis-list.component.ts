@@ -6,13 +6,14 @@ import { ActivatedRoute } from '@angular/router';
 import { CrisisService } from '../crisis.service';
 import { Crisis } from '../crisis';
 
+
 @Component({
   selector: 'app-hero-list',
   templateUrl: './crisis-list.component.html',
   styleUrls: ['./crisis-list.component.css']
 })
 export class CrisisListComponent implements OnInit {
-  heroes$!: Observable<Crisis[]>;
+  crises$?: Observable<Crisis[]>;
   selectedId = 0;
 
   constructor(
@@ -21,10 +22,11 @@ export class CrisisListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.heroes$ = this.route.paramMap.pipe(
+
+    this.crises$ = this.route.paramMap.pipe(
       switchMap(params => {
         this.selectedId = parseInt(params.get('id')!, 10);
-        return this.service.getHeroes();
+        return this.service.getCrises();
         console.log("I in list")
       })
     );
