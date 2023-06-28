@@ -1,14 +1,13 @@
-// TODO: Feature Componetized like CrisisCenter
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { CrisisService } from '../crisis.service';
 import { Crisis } from '../crisis';
-
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-hero-list',
+  selector: 'app-crisis-list',
   templateUrl: './crisis-list.component.html',
   styleUrls: ['./crisis-list.component.css']
 })
@@ -22,13 +21,18 @@ export class CrisisListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
-    this.crises$ = this.route.paramMap.pipe(
+    this.crises$ = this.route.firstChild?.paramMap.pipe(
       switchMap(params => {
         this.selectedId = parseInt(params.get('id')!, 10);
         return this.service.getCrises();
-        console.log("I in list")
       })
     );
   }
 }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/
